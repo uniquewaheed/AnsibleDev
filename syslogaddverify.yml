@@ -20,7 +20,7 @@
       assert:
         that:
           - "'192.168.101.0/24' | network_in_network(item)"
-        fail_msg: "{{item}} is invalid SUBNET address <FAILURE>"
+        fail_msg: "{{item}} is invalid SUBNET address entered. <FAILURE>"
         success_msg: "{{item}}:<OKAY>"
         quiet: true
       loop: "{{syslog_server}}"
