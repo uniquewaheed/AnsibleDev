@@ -1,0 +1,36 @@
+---
+- name: Configure Syslog Server IPs Play
+  hosts: localhost
+  gather_facts: false 
+   
+  vars_files:
+   - groupslogssrv.yml
+
+  tasks:
+    - name: Check Valid IP ADD Syslog 
+      assert:
+        that:
+          - item | ipv4 == item
+        fail_msg: "{{item}} is invalid IP address <FAILURE>"
+        success_msg: "{{item}}:<OKAY>"
+        quiet: true
+      loop: "{{syslog_server}}"
+
+    - name: Check that every belong to valid subnet
+      assert:
+        that:
+          - "'192.168.101.0/24' | network_in_network(item)"
+        fail_msg: "{{item}} is invalid SUBNET address <FAILURE>"
+        success_msg: "{{item}}:<OKAY>"
+        quiet: true
+      loop: "{{syslog_server}}"
+
+    - name: Check that No of syslogs servers
+      assert:
+        that:
+          - syslog_server  | length >=2
+        fail_msg: "Atleast 2 Syslogs are required <FAILURE>"
+        success_msg: "{{syslog_server | length }} IPs are present<OK>"
+        quiet: true  
+
+...

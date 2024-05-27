@@ -1,0 +1,20 @@
+---
+- name: Configure Syslog Server IPs Play
+  hosts: routers
+  gather_facts: false
+  connection: network_cli
+
+  vars:
+   syslog_server:
+    - 192.168.101.1    
+    - 192.168.101.2
+    - 192.168.101.3
+
+  tasks:
+    - name: Logging Servers IPs 
+      ios_config:
+        lines:
+          - logging host {{item}}  
+        save_when: changed
+      loop: "{{syslog_server}}" 
+... 

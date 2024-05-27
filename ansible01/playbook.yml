@@ -1,0 +1,15 @@
+---
+- name: My First PlayBook
+  hosts: routers
+  gather_facts: no
+  connection: network_cli
+
+  tasks:
+   - name: Configure Loopback Interface
+     ios_config:
+       parents: interface {{ int_name }}
+       lines:
+         - ip address {{ int_ip }} 255.255.255.255
+         - description {{ int_desc }} 
+         - no shutdown   
+...

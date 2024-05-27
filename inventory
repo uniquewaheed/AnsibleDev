@@ -1,0 +1,22 @@
+[ios]
+
+[junos]
+
+[iosxr]
+
+[ios:vars]
+ansible_network_os=ios
+ansible_user=admin
+ansible_password=admin
+[ios:children]
+routers
+[routers]
+CSREdge ansible_host=172.16.95.164
+CSR8 ansible_host=172.16.95.161
+CSR9 ansible_host=172.16.95.160
+CSR10 ansible_host=172.16.95.162
+CSR12 ansible_host=172.16.95.16
+CSR13 ansible_host=172.16.95.168
+CSR14 ansible_host=172.16.95.163 
+CSR15 ansible_host=172.16.95.166 
+CSR16 ansible_host=172.16.95.167 
