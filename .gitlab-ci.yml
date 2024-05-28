@@ -4,7 +4,7 @@ stages:
   - input_validation
   - deploy
 
-yamllint_validation:
+yamllint:
   stage: syntax_validation
   script:
     - yamlint group_var.yml
@@ -13,6 +13,7 @@ yamllint_validation:
     - yamlint syslog02.yml
     - yamlint sysaddverify.yml
     - yamlint syslogparse.yml
+
 validate_input:
   stage: input_validation
   script:
@@ -20,10 +21,9 @@ validate_input:
 
 deploy_syslog:
   stage: deploy
-  only: 
-   refs:
-     - master
-  
+  only:
+    refs:
+      - master
   script:
-    - ansible-playbook syslog.yml -i inventory
+    - ansible-playbook playbook.yml -i inventory
 ...
