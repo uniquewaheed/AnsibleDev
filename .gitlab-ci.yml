@@ -7,7 +7,7 @@ stages:
 yamllint:
   stage: syntax_validation
   script:
-    - yamlint group_var.yml
+    - yamlint groupslogssrv.yml
     - yamlint syslog.yml
     - yamlint syslog01.yml
     - yamlint syslog02.yml
