@@ -8,6 +8,7 @@ yamllint:
   stage: syntax_validation
   script:
     - ansible --version
+    - yamllint --version
     - ansible-playbook syslog01.yml -i inventory  --syntax-check
     - ansible-playbook syslog02.yml -i inventory  --syntax-check
     - ansible-playbook syslogaddverify.yml -i inventory  --syntax-check
