@@ -19,4 +19,5 @@ CSR12 ansible_host=172.16.95.16
 CSR13 ansible_host=172.16.95.168
 CSR14 ansible_host=172.16.95.163 
 CSR15 ansible_host=172.16.95.166 
-CSR16 ansible_host=172.16.95.167 
+CSR16 ansible_host=172.16.95.167
+CSR19 ansible_host=172.16.95.169
