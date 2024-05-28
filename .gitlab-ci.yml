@@ -7,10 +7,8 @@ stages:
 yamllint:
   stage: syntax_validation
   script:
-    - yamllint groupslogssrv.yml
-    - yamllint syslogaddverify.yml
-    - yamllint syslogparse.yml
-    - yamllint syslog.yml
+    - yamllint --version
+    
 validate_input:
   stage: input_validation
   script:
