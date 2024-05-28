@@ -9,12 +9,13 @@ yamllint:
   script:
     - yamllint groupslogssrv.yml
     - yamllint syslogaddverify.yml
-
+    - yamllint syslogparse.yml
+    - yamllint syslog.yml
 validate_input:
   stage: input_validation
   script:
     - ansible-playbook syslogparse.yml
-    
+
 deploy_syslog:
   stage: deploy
   only:
