@@ -8,22 +8,16 @@ yamllint:
   stage: syntax_validation
   script:
     - yamlint groupslogssrv.yml
-    - yamlint syslog.yml
-    - yamlint syslog01.yml
-    - yamlint syslog02.yml
-    - yamlint sysaddverify.yml
-    - yamlint syslogparse.yml
-
+    - yamlint syslogaddverify.yml
 validate_input:
   stage: input_validation
   script:
-    - ansible-playbook syslog.yml
-
+    - ansible-playbook syslogparse.yml
 deploy_syslog:
   stage: deploy
   only:
     refs:
       - master
   script:
-    - ansible-playbook playbook.yml -i inventory
+    - ansible-playbook syslog.yml -i inventory
 ...

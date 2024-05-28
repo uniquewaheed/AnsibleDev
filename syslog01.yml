@@ -1,24 +1,25 @@
 ---
 - name: Configure Syslog Server IPs Play
-      hosts:routers
-      gather_facts:false
-      connection:network_cli
+  hosts: routers
+  gather_facts: false
+  connection: network_cli
 
   vars_files:
    - groupslogssrv.yml
   tasks:
-   - name: collect Existing Syslog Configs
-     ios_command:
-      -commmd: show run | include logging host
-     register: raw_sys_list
+    - name: collect Existing Syslog Configs
+      ios_command:
+       commands: show run | include logging host
+      register: raw_sys_list
 
-   - name: Print Collected Configuration
-     debug:
-      msg: "{{raw_sys_list}}"
-   - name: Logging Servers IPs
-     ios_config:
-      lines:
-       - logging host {{item}}
-      save_when: changed
+    - name: Print Collected Configuration
+      debug:
+       msg: "{{raw_sys_list}}"
+
+    - name: Logging Servers IPs
+      ios_config:
+        lines:
+         - logging host {{item}}
+        save_when: changed
       loop: "{{syslog_server}}"
 ...
