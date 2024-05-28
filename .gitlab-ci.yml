@@ -22,5 +22,5 @@ deploy_syslog:
     refs:
       - master
   script:
-    - ansible-playbook syslog.yml -i inventory
+    - ansible-playbook syslog01.yml -i inventory
 ...
