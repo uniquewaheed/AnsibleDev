@@ -31,6 +31,5 @@
        - syslog_server  | length >=2
       fail_msg: "Atleast 2 Syslogs are required <FAILURE>"
       success_msg: "{{syslog_server | length }} IPs are present<OK>"
-      
       quiet: true
 ...
